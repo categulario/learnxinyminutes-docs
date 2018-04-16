@@ -353,7 +353,7 @@ double_input(6) % ans = 12
 % anonymous function. Useful when quickly defining a function to pass to
 % another function (eg. plot with fplot, evaluate an indefinite integral
 % with quad, find roots with fzero, or find minimum with fminsearch).
-% Example that returns the square of it's input, assigned to the handle sqr:
+% Example that returns the square of its input, assigned to the handle sqr:
 sqr = @(x) x.^2;
 sqr(10) % ans = 100
 doc function_handle % find out more
@@ -557,6 +557,8 @@ c = a + b
 
 ## More on Matlab
 
-* The official website [http://http://www.mathworks.com/products/matlab/](http://www.mathworks.com/products/matlab/)
-* The official MATLAB Answers forum: [http://www.mathworks.com/matlabcentral/answers/](http://www.mathworks.com/matlabcentral/answers/)
+* [The official website](http://www.mathworks.com/products/matlab/)
+* [The official MATLAB Answers forum](http://www.mathworks.com/matlabcentral/answers/)
+* [Loren on the Art of MATLAB](http://blogs.mathworks.com/loren/)
+* [Cleve's Corner](http://blogs.mathworks.com/cleve/)
 

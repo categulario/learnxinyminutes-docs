@@ -111,6 +111,7 @@ contract SimpleBank { // CapWords
     /// @return The balance of the user
     // 'constant' prevents function from editing state variables;
     // allows function to run locally/off blockchain
+    // NOTE: 'constant' on functions is an alias to 'view', but this is deprecated and is planned to be dropped in version 0.5.0.
     function balance() constant public returns (uint) {
         return balances[msg.sender];
     }
@@ -134,7 +135,7 @@ uint constant VERSION_ID = 0x123A1; // A hex constant
 // All state variables (those outside a function)
 // are by default 'internal' and accessible inside contract
 // and in all contracts that inherit ONLY
-// Need to explicitly set to 'public' to allow external contracts to access	
+// Need to explicitly set to 'public' to allow external contracts to access
 int256 public a = 8;
 
 // For int and uint, can explicitly set space in steps of 8 up to 256
@@ -352,7 +353,7 @@ function increment(uint x) constant returns (uint x) {
     // y is a state variable, and can't be changed in a constant function
 }
 
-// 'pure' is more strict than 'constant', and does not 
+// 'pure' is more strict than 'constant', and does not
 // even allow reading of state vars
 // The exact rules are more complicated, so see more about
 // constant/pure:
@@ -384,7 +385,7 @@ function depositEther() public payable {
 
 
 // Prefer loops to recursion (max call stack depth is 1024)
-// Also, don't setup loops that you haven't bounded, 
+// Also, don't setup loops that you haven't bounded,
 // as this can hit the gas limit
 
 // B. Events
@@ -399,11 +400,11 @@ function depositEther() public payable {
 event LogSent(address indexed from, address indexed to, uint amount); // note capital first letter
 
 // Call
-Sent(from, to, amount);
+LogSent(from, to, amount);
 
-// For an external party (a contract or external entity), to watch using 
+// For an external party (a contract or external entity), to watch using
 // the Web3 Javascript library:
-Coin.Sent().watch({}, '', function(error, result) {
+Coin.LogSent().watch({}, '', function(error, result) {
     if (!error) {
         console.log("Coin transfer: " + result.args.amount +
             " coins were sent from " + result.args.from +
@@ -709,7 +710,7 @@ contract CrowdFunder {
         return contributions.length - 1; // return id
     }
 
-    function checkIfFundingCompleteOrExpired() 
+    function checkIfFundingCompleteOrExpired()
     public
     {
         if (totalRaised > minimumToRaise) {
@@ -829,7 +830,6 @@ someContractAddress.callcode('function_name');
 ## Additional resources
 - [Solidity Docs](https://solidity.readthedocs.org/en/latest/)
 - [Smart Contract Best Practices](https://github.com/ConsenSys/smart-contract-best-practices)
-- [Solidity Style Guide](https://ethereum.github.io/solidity//docs/style-guide/): Ethereum's style guide is heavily derived from Python's [pep8](https://www.python.org/dev/peps/pep-0008/) style guide.
 - [EthFiddle - The JsFiddle for Solidity](https://ethfiddle.com/)
 - [Browser-based Solidity Editor](https://remix.ethereum.org/)
 - [Gitter Solidity Chat room](https://gitter.im/ethereum/solidity)
@@ -850,9 +850,10 @@ someContractAddress.callcode('function_name');
 - [Hacking Distributed Blog](http://hackingdistributed.com/)
 
 ## Style
-- Python's [PEP8](https://www.python.org/dev/peps/pep-0008/) is used as the baseline style guide, including its general philosophy
+- [Solidity Style Guide](http://solidity.readthedocs.io/en/latest/style-guide.html): Ethereum's style guide is heavily derived from Python's [PEP 8](https://www.python.org/dev/peps/pep-0008/) style guide.
 
 ## Editors
+- [Emacs Solidity Mode](https://github.com/ethereum/emacs-solidity)
 - [Vim Solidity](https://github.com/tomlion/vim-solidity)
 - Editor Snippets ([Ultisnips format](https://gist.github.com/nemild/98343ce6b16b747788bc))
 

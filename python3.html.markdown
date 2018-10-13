@@ -7,6 +7,7 @@ contributors:
     - ["Zachary Ferguson", "http://github.com/zfergus2"]
     - ["evuez", "http://github.com/evuez"]
     - ["Rommel Martinez", "https://ebzzry.io"]
+    - ["Roberto Fernandez Diaz", "https://github.com/robertofd1995"]
 filename: learnpython3.py
 ---
 
@@ -137,6 +138,10 @@ len("This is a string")  # => 16
 # If your Python 3 code also needs to run on Python 2.5 and below, you can also
 # still use the old style of formatting:
 "%s can be %s the %s way" % ("Strings", "interpolated", "old")  # => "Strings can be interpolated the old way"
+
+# You can also format using f-strings or formatted string literals
+name = "Reiko"
+f"She said her name is {name}." # => "She said her name is Reiko"
 
 
 # None is an object
@@ -348,6 +353,8 @@ valid_set = {(1,), 1}
 # Add one more item to the set
 filled_set = some_set
 filled_set.add(5)  # filled_set is now {1, 2, 3, 4, 5}
+# Sets do not have duplicate elements
+filled_set.add(5)  # it remains as before {1, 2, 3, 4, 5}
 
 # Do set intersection with &
 other_set = {3, 4, 5, 6}

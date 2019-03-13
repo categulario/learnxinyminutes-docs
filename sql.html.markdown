@@ -6,7 +6,7 @@ filename: learnsql.sql
 ---
 
 SQL stands for Structured Query Language. It is the stantdard query language
-or relational databases.
+of relational databases.
 
 ```sql
 -- This is a single line comment
